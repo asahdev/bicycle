@@ -31,5 +31,5 @@ def main():
     model_e.print_list()
     model_f.print_list()
 
-
+#if __name__ == "__main__":
 main()
