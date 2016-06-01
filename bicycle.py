@@ -59,6 +59,7 @@ def main():
         print(list_bikes[key])
     list_bikes = [model_a.cop,model_b.cop,model_c.cop,model_d.cop,model_e.cop,model_f.cop]
 
+<<<<<<< HEAD
     print("Printing inventorty of the shop")
     print("%s : %s " %(model_a_in.model_name,model_a_in.count)) 
     print("%s : %s " %(model_b_in.model_name,model_b_in.count))
@@ -69,3 +70,7 @@ def main():
 
 if __name__ == "__main__":
   main()
+=======
+#if __name__ == "__main__":
+main()
+>>>>>>> 2c2f1951f12044733d189b0e3a5e63e851fbf96e
