@@ -42,31 +42,35 @@ def main():
 
     list_bikes = { model_a.cop:model_a.model_name,model_b.cop:model_b.model_name,model_c.cop:model_c.model_name,model_d.cop:model_d.model_name,model_e.cop:model_e.model_name,model_f.cop:model_f.model_name}    
 
-    d_inven = { model_a.model_name:bike_shop.count_a,model_b.model_name:bike_shop.count_b,model_c.model_name:bike_shop.count_c,model_d.model_name:bike_shop.count_d,model_d.model_name:bike_shop.count_d,model_e.model_name:bike_shop.count_f }
+    d_inven = { model_a.model_name:bike_shop.count_a,model_b.model_name:bike_shop.count_b,model_c.model_name:bike_shop.count_c,model_d.model_name:bike_shop.count_d,model_d.model_name:bike_shop.count_d,model_e.model_name:bike_shop.count_e,model_f.model_name:bike_shop.count_f }
 
     list_a = []
     list_b = []
     list_c = []
-
+    choice_b = []
+    list_inv = [ bike_shop.count_a,bike_shop.count_b,bike_shop.count_c,bike_shop.count_d,bike_shop.count_e,bike_shop.count_f ]
+#Checking what bikes Customer can afford
     print("%s can afford " %(customer_a.cus_name))    
     for key,value in list_bikes.items():
       if customer_a.buget >= key:
          list_a.append(value)
          print(list_bikes[key])
-#         print(list_a)
 
+#Checking what bikes Customer can afford
     print("%s can afford " %(customer_b.cus_name))
     for key,value in list_bikes.items():
       if customer_b.buget >= key:
         list_b.append(value)
         print(list_bikes[key])
 
+#Checking what bikes Customer can afford
     print("%s can afford " %(customer_c.cus_name))
     for key,value in list_bikes.items():	
       if customer_c.buget >= key:
         list_c.append(value)
         print(list_bikes[key])
 
+#Printing Inventory of shop
     print("Printing inventorty of the shop")
     print("%s : Inventory: %s   Product code:001 " %(model_a.model_name,bike_shop.count_a)) 
     print("%s : Inventory: %s   Product code:002" %(model_b.model_name,bike_shop.count_b))
@@ -75,6 +79,7 @@ def main():
     print("%s : Inventory: %s   Product code:005" %(model_e.model_name,bike_shop.count_e))
     print("%s : Inventory: %s   Product code:006" %(model_f.model_name,bike_shop.count_f))
     print("\n")
+#Customers buying bikes
     print("Welcome Anshul , please enter the bike name to buy bike" )
     choice = input()
     if choice in list_a:
@@ -83,7 +88,10 @@ def main():
           print("You have choosen bike %s " %(value))
           print("The cost of the bike is %s " %(key))
           print("The buget left with customer is %s" %(customer_a.buget - key))
-      
+          d_inven[value] = d_inven[value] - 1
+          print(d_inven[value])
+          choice_b.append(value)          
+          
     else:
       print("No Bike name found or cant afford bike")
   
@@ -95,7 +103,8 @@ def main():
           print("You have choosen bike %s " %(value))
           print("The cost of the bike is %s " %(key))
           print("The buget left with customer is %s" %(customer_b.buget - key))
-
+          choice_b.append(value)
+          d_inven[value] = d_inven[value] - 1
     else:
       print("No Bike name found or cant afford bike")
 
@@ -107,8 +116,20 @@ def main():
           print("You have choosen bike %s " %(value))
           print("The cost of the bike is %s " %(key))
           print("The buget left with customer is %s" %(customer_c.buget - key))
-
+          choice_b.append(value)
+          d_inven[value] = d_inven[value] - 1
     else:
       print("No Bike name found or cant afford bike")
+
+#Printing Inventory of shop
+    print("Printing Inventory of the shop")
+    print("%s : Inventory: %s   Product code:001 " %(model_a.model_name,d_inven[model_a.model_name]))
+    print("%s : Inventory: %s   Product code:002" %(model_b.model_name,d_inven[model_b.model_name]))
+    print("%s : Inventory: %s   Product code:003" %(model_c.model_name,d_inven[model_c.model_name]))
+    print("%s : Inventory: %s   Product code:004" %(model_d.model_name,d_inven[model_d.model_name]))
+    print("%s : Inventory: %s   Product code:005" %(model_e.model_name,d_inven[model_e.model_name]))
+    print("%s : Inventory: %s   Product code:006" %(model_f.model_name,d_inven[model_f.model_name]))
 if __name__ == "__main__":
+
+   
   main()
